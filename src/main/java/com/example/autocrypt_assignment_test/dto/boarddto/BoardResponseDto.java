@@ -19,4 +19,8 @@ public class BoardResponseDto {
         this.content = boardRequestDto.getTitle();
         this.isPrivate = boardRequestDto.isPrivate();
     }
+
+    public BoardResponseDto(String msg){
+        this.msg = msg;
+    }
 }

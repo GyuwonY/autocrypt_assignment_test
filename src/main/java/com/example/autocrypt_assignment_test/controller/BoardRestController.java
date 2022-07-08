@@ -28,9 +28,20 @@ public class BoardRestController {
         return boardService.createBoard(userDetails, boardRequestDto);
     }
 
-    @GetMapping("/board/{type}/{sort}")
-    public ResponseEntity<BoardListResponseDto>boardList(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestParam Map<String, String> boardListRequest){
-        return boardService.boardList(new ObjectMapper().convertValue(boardListRequest, BoardListRequestDto.class), userDetails);
+    @GetMapping("/board")
+    public ResponseEntity<BoardListResponseDto> boardList(@AuthenticationPrincipal UserDetailsImpl userDetails){
+
+        return boardService.boardList(userDetails);
+    }
+
+    @PutMapping("/board")
+    public ResponseEntity<BoardResponseDto> updateBoard(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody BoardRequestDto boardRequestDto){
+        return boardService.updateBoard(userDetails, boardRequestDto);
+    }
+
+    @DeleteMapping("/board/{boardid}")
+    public ResponseEntity<BoardResponseDto> deleteBoard(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long boardid){
+        return boardService.deleteBoard(userDetails, boardid);
     }
 
 }

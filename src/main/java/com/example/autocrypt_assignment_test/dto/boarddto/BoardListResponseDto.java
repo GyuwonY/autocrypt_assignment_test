@@ -13,5 +13,4 @@ import java.util.List;
 public class BoardListResponseDto {
     private List<Board> boardList;
 
-
 }

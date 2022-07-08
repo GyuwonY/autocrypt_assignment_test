@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -22,6 +23,10 @@ public class Board extends Timestamped {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
+    @OneToMany
+    @JoinColumn(name = "commentId")
+    private List<Comment> comments;
 
     @Column(nullable = false)
     private String title;
@@ -39,4 +44,9 @@ public class Board extends Timestamped {
         this.user = user;
     }
 
+    public void update(BoardRequestDto boardRequestDto) {
+        this.title = boardRequestDto.getTitle();
+        this.content = boardRequestDto.getContent();
+        this.isPrivate = boardRequestDto.isPrivate();
+    }
 }
