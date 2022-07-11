@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface BoardRepository extends JpaRepository<Board,Long>{
 
-    List<Board> findAllByPrivateOrUser(boolean isPrivate, User user);
+    List<Board> findAllByIsPrivateOrUser(boolean isPrivate, User user);
 
     Optional<Board> findByBoardIdAndUser(Long boardId, User user);
 

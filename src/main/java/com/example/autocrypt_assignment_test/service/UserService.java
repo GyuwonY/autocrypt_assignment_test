@@ -28,7 +28,6 @@ public class UserService {
     @Transactional
     public ResponseEntity<SignupResponseDto> signup(SignupRequestDto signupRequestDto){
         userUtil.signupValidate(signupRequestDto);
-
         signupRequestDto.setPassword(passwordEncoder.encode(signupRequestDto.getPassword()));
         userRepository.save(new User(signupRequestDto));
 

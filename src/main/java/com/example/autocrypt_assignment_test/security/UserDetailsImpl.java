@@ -1,12 +1,13 @@
 package com.example.autocrypt_assignment_test.security;
 
 import com.example.autocrypt_assignment_test.model.User;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
+@ToString
 public class UserDetailsImpl implements UserDetails {
 
     private final User user;
@@ -25,9 +26,7 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     @Override
-    public String getUsername() {
-        return user.getUsername();
-    }
+    public String getUsername() {return user.getUsername();}
 
     @Override
     public boolean isAccountNonExpired() {
@@ -51,8 +50,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-
-        return authorities;
+        return null;
     }
 }

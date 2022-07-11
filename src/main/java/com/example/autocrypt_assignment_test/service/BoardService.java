@@ -1,6 +1,5 @@
 package com.example.autocrypt_assignment_test.service;
 
-import com.example.autocrypt_assignment_test.dto.boarddto.BoardListRequestDto;
 import com.example.autocrypt_assignment_test.dto.boarddto.BoardListResponseDto;
 import com.example.autocrypt_assignment_test.dto.boarddto.BoardRequestDto;
 import com.example.autocrypt_assignment_test.dto.boarddto.BoardResponseDto;
@@ -9,9 +8,7 @@ import com.example.autocrypt_assignment_test.exception.ErrorCode;
 import com.example.autocrypt_assignment_test.model.Board;
 import com.example.autocrypt_assignment_test.repository.BoardRepository;
 import com.example.autocrypt_assignment_test.security.UserDetailsImpl;
-import com.example.autocrypt_assignment_test.utils.BoardUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -39,7 +36,7 @@ public class BoardService {
     @Transactional
     public ResponseEntity<BoardListResponseDto> boardList(UserDetailsImpl userDetails) {
 
-        List<Board> boardList = boardRepository.findAllByPrivateOrUser(false,userDetails.getUser());
+        List<Board> boardList = boardRepository.findAllByIsPrivateOrUser(false,userDetails.getUser());
         return new ResponseEntity<>(new BoardListResponseDto(boardList), HttpStatus.OK);
     }
 
