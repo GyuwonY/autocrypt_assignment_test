@@ -4,6 +4,7 @@
 Autocrypt 과제 전형 요구사항에 입각한 게시판 서비스입니다.
 
 Spring security inMemoryAuthentication을 통해 user1, user2 계정을 사용할 수 있으며 패스워드는 test 입니다.
+Test를 위해 inmemory 기반 DB H2 적용하였습니다.
 
 #API
 
